@@ -690,9 +690,11 @@ function createProject(app) {
             shell.cd(path.join(__dirname, `./${app.name}`))
             shell.exec('git init')
             shell.exec('git add .')
-            shell.exec(`git commit -m ${config.commit}`)
-            shell.exec(`git remote add ${config.location}`)
-            shell.exec(`git push -u origin master`)
+            shell.exec(`git commit -m '${config.commit}'`)
+            shell.exec(`git remote add origin ${config.location}.git`)
+            shell.exec(`git branch main`)
+            shell.exec(`git checkout main`)
+            shell.exec(`git push -u origin main`)
         }
     }
     catch {
